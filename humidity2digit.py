@@ -118,6 +118,11 @@ while True:
 		r = [255,0,0] # red if lower
 	hum_prev = hum_int
 	hum =  str(hum_int) # convert reading to string
+	
+	# add a leading zero for single digit readings
+	if hum_int < 10:
+		hum = '0' + hum
+	
 	image = numToMatrix(hum[1]) + space + numToMatrix(hum[0]) # build image from two digits plus spacer
 	ap.set_pixels(image)
 	time.sleep(0.5)
